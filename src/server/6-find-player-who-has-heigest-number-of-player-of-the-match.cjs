@@ -26,6 +26,26 @@ function numberOfTimesTeamWonMatchToss() {
         }
         return accumulator;
       }, {});
+
+      // console.log(playerOfTheMatch);
+      let listOfThePlayerOfTheMatch = Object.entries(playerOfTheMatch).reduce(
+        (acc, curr) => {
+          let perOfYear = Object.fromEntries(
+            Object.entries(curr[1])
+              .sort((first, second) => second[1] - first[1])
+              .slice(0, 1)
+          );
+          //  console.log(perOfYear);
+          acc[curr[0]] = perOfYear;
+          return acc;
+        },
+        {}
+      );
+      console.log(listOfThePlayerOfTheMatch);
+      // console.log(listOfThePlayerOfTheMatch.length);
+
+      //---------------------------------------------------------------------
+      /*
       //  console.log(playerOfTheMatch);
       let obj = {};
       let answer1 = [];
@@ -67,13 +87,15 @@ function numberOfTimesTeamWonMatchToss() {
         index++;
       }
       //   console.log(newObject);
-      fs.writeFile(outputFilePath, JSON.stringify(newObject), (error) => {
-        if (error) {
-          throw error;
-        } else {
-          console.log("File written successfully");
-        }
-      });
+*/
+      //-----------------------------------------------------------------------
+      //   fs.writeFile(outputFilePath, JSON.stringify(newObject), (error) => {
+      //     if (error) {
+      //       throw error;
+      //     } else {
+      //       console.log("File written successfully");
+      //     }
+      //   });
     });
 }
 
